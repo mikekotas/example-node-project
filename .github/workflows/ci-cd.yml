@@ -50,11 +50,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install Heroku CLI
+        run: npm install -g heroku
+
+      - name: Configure Heroku Git Remote
+        run: |
+          heroku git:remote -a example-node-project
+          git remote -v # Verify the remote Url is set
+
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          npm install -g heroku
-          heroku git:remote -a example-node-project
           git push heroku main
 
