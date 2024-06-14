@@ -5,7 +5,7 @@ const http = require('http');
 let server;
 
 beforeAll((done) => {
-  server = http.createServer(app).listen(4000, done); // Start the server on port 4000
+  server = http.createServer(app).listen(4000, done); // Start the server on port 4000 and listen on port 4000
 });
 
 afterAll((done) => {
