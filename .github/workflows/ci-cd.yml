@@ -32,7 +32,7 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test
+        run: npm test -- --detectOpenHandles
 
   deploy:
     needs: build-and-test
