@@ -50,17 +50,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Heroku CLI
-        run: npm install -g heroku
-
-      - name: Configure Heroku Git Remote
-        run: |
-          heroku git:remote -a example-node-project
-          git remote -v # Verify the remote Url is set
-
       - name: Deploy to Heroku
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-        run: |
-          git push heroku main
+        uses: akhileshns/heroku-deploy@v3.13.15
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "example-node-project"
+          heroku_email: "mike.kotantakis@gmail.com"
 
