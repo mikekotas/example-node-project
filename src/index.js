@@ -7,7 +7,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/new', (req, res) => {
-  console.log('the app has entered the new endpoint');
     res.send('New endpoint');
   });
 
