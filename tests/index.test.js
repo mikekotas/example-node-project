@@ -6,7 +6,7 @@ let server;
 
 beforeAll((done) => {
   server = http.createServer(app).listen(4000, done); // Start the server on port 4000
-  console.log('Server is running on port 4000');
+  // This will start the server on port 4000
 });
 
 afterAll((done) => {
