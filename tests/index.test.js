@@ -1,5 +1,12 @@
 const request = require('supertest');
-const { app, server } = require('../src/index');
+const app = require('../src/index');
+const http = require('http');
+
+let server;
+
+beforeAll((done) => {
+  server = http.createServer(app).listen(4000, done); // Start the server on port 4000
+});
 
 afterAll((done) => {
   server.close(done); // Properly close the server after tests
