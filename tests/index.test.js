@@ -1,6 +1,16 @@
 const request = require('supertest');
 const app = require('../src/index');
 
+let server;
+
+beforeAll((done) => {
+  server = app.listen(4000, done); // Start the server on a different port to avoid conflicts
+});
+
+afterAll((done) => {
+  server.close(done); // Properly close the server after tests
+});
+
 describe('GET /', () => {
   it('should respond with Hello, world!', async () => {
     const response = await request(app).get('/');
