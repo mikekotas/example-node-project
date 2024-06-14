@@ -10,8 +10,12 @@ app.get('/new', (req, res) => {
     res.send('New endpoint');
   });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+  let server;
 
-module.exports = app;
+  if (require.main === module) {
+    server = app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  }
+
+module.exports = { app, server };
